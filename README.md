@@ -140,3 +140,5 @@ When a model is loaded it does NOT connect automatically to your database. The f
 
     $this->load->model('model_name', '', $config);
 
+
+http://api.exchangeratesapi.io/v1/latest?access_key=d9fa0d08e2158328e031b8b6a7eb7582&format=1&base=USD&symbols=USD,Euro,RON
