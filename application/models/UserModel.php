@@ -6,6 +6,11 @@ class UserModel extends CI_Model {
         $this->load->database();
     }
 
+    public function userCount($where=array())
+    {
+        return $this->db->where($where)->from("users")->count_all_results();
+    }
+
     public function getUsers()
     {
         return "data";

@@ -81,6 +81,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <p>
             <a href="/AdminProducts/index">admin products</a>
         </p>
+        <p>
+            <a href="/AdminDashboard/index">admin Dashboard</a>
+        </p>
     </div>
 </div>
 
