@@ -7,6 +7,7 @@ class AdminProducts extends CI_Controller {
         parent::__construct();
         $this->load->model('ProductModel');
         $this->load->library(array('session', 'form_validation'));
+        $this->isLoggedIn();
     }
 
 	public function index()

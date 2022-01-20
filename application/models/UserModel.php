@@ -18,7 +18,7 @@ class UserModel extends CI_Model {
 
     public function getUserLogin($email, $password)
     {
-        $query = $this->db->get_where('users', array('email' => $email, 'password' => md5($password)));
+        $query = $this->db->get_where('users', array('isverified'=>1,'is_active'=>1,'email' => $email, 'password' => md5($password)));
 
         return $query->row_array();
     }
