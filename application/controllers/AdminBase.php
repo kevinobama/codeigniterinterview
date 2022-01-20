@@ -26,6 +26,7 @@ class AdminBase extends CI_Controller {
      * This function used to check the user is logged in or not
      */
     function isLoggedIn() {
+        $this->load->helper(array('url'));
         $isLoggedIn = $this->session->userdata ( 'isLoggedIn' );
 
         if (! isset ( $isLoggedIn ) || $isLoggedIn != TRUE) {

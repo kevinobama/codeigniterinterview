@@ -8,7 +8,7 @@ class AdminDashboard extends AdminBase {
         $this->load->model('UserModel');
         $this->load->model('ProductModel');
 
-        $this->load->library(array('session', 'form_validation'));
+        $this->load->library('session');
         $this->isLoggedIn();
     }
 
