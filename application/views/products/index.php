@@ -69,18 +69,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>kevin codeigniter Interview</h1>
-
 	<div id="body">
-        <p>
-            <a href="/users/login">login</a>
-        </p>
-        <p>
-            <a href="/users/registration">registration</a>
-        </p>
-
-        <p>
-            <a href="/AdminProducts/index">admin products</a>
-        </p>
+        product
+        <?php foreach ($products as $key=>$product) { ?>
+            <p><?=$product['id']?> <?=$product['title']?></p>
+        <?php  } ?>
     </div>
 </div>
 
