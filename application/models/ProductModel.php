@@ -61,4 +61,14 @@ class ProductModel extends CI_Model {
         $query = $this->db->query($sql);
         return $query->result_array();
     }
+
+
+    public function addMyProduct($data) {
+        $this->db->trans_start();
+        $this->db->insert('user_products', $data);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+    }
 }

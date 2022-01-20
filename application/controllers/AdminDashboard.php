@@ -42,6 +42,7 @@ class AdminDashboard extends AdminBase {
             ));
         }  else {
             echo("no permission");
+            redirect('/AdminProducts/myProducts');
         }
 	}
 }

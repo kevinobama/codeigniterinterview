@@ -54,4 +54,16 @@ class UserModel extends CI_Model {
         $query = $this->db->query($sql);
         return $query->result_array()[0]['usercount'];
     }
+
+    public function getUserProducts($userId) {
+        $this->db->select('user_products.*,products.title');
+        $this->db->from('user_products');
+        $this->db->where('user_id', $userId);
+        $this->db->join('products', 'products.id = user_products.productid', 'left');
+        return $this->db->get()->result_array();
+
+        //$query = $this->db->get_where('user_products', array('user_id'=>$userId));
+
+        //return $query->result_array();
+    }
 }

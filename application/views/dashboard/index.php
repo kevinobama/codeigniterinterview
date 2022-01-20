@@ -69,6 +69,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	<h1>admin Dashboard</h1>
+    <a href="/">Home</a>
+    <a href="/AdminDashboard/index">admin Dashboard</a>|
+    <a href="/AdminProducts/index">products</a>
+    <a href="/AdminProducts/myProducts">My Products</a>
+    </p>
 	<div id="body">
         6.1. Count of all active and verified users.<br>
         6.2. Count of active and verified users who have attached active products.<br>
