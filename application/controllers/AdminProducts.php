@@ -6,13 +6,17 @@ class AdminProducts extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('ProductModel');
-        $this->load->library(array('session', 'form_validation'));
+        $this->load->library(array('session'));
         $this->isLoggedIn();
     }
 
 	public function index()
 	{
-        $products = $this->ProductModel->getProducts();
-		$this->load->view('products/index',compact('products'));
+        if($this->isAdmin()) {
+            $products = $this->ProductModel->getProducts();
+            $this->load->view('products/index', compact('products'));
+        } else {
+            echo("no permission");
+        }
 	}
 }
