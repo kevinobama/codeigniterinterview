@@ -21,11 +21,9 @@ class ProductModel extends CI_Model {
     //Select count(id) from products where status=’active’
     //and id not in(select productid from user_products)
     public function countUnUsedProduct() {
-        $sql="Select count(id) as productcount from products where status='active' 
-        and id not in(select productid from user_products)";
-
-        $query = $this->db->query($sql);
-        return $query->result_array()[0]['productcount'];
+        $productids = $this->db->distinct()->select('productid')->get_where("user_products")->result_array();
+        $productids = array_column($productids,'productid');
+        return $this->db->where_not_in('id', $productids)->from("products")->count_all_results();
     }
 
     //Select sum(user_products.quantity) as  from user_products left join products p on user_products.productid= p.id where p.status='active'
