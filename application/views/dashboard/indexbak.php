@@ -122,32 +122,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
             <tr>
-                <td width="50%">6.7. Summarized prices of all active products per user. For example - John Summer - 85Euro, Lennon Green – 107Euro.</td>
+                <td width="50%">6.7. Summarized prices of all active products per user. For example - John Summer - 85$, Lennon Green – 107$.</td>
                 <td>
                     <?php
                     foreach ($priceAttachedProductPeruser as $priceAttachedProduct) {
-                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price']."Euro <br>");
+                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price']."$ <br>");
                     }
                      ?>
 
                 </td>
             </tr>
             <tr>
-                <td width="50%">6.8. The exchange rates for Euro   based on Euro</td>
+                <td width="50%">6.8. The exchange rates for Euro   based on USD</td>
                 <td>
                     <?php
                     foreach ($priceAttachedProductPeruser as $priceAttachedProduct) {
-                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price'] * $exchangeRate['USD']."$ <br>");
+                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price'] * $exchangeRate['usdeuro']."Euro <br>");
                     }
                     ?>
                 </td>
             </tr>
             <tr>
-                <td width="50%">6.8. The exchange rates for   RON based on Euro </td>
+                <td width="50%">6.8. The exchange rates for   RON based on USD </td>
                 <td>
                     <?php
                     foreach ($priceAttachedProductPeruser as $priceAttachedProduct) {
-                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price'] * $exchangeRate['RON']."RON <br>");
+                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price'] * $exchangeRate['usdRON']."RON <br>");
                     }
                     ?>
                 </td>

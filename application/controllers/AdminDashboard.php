@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require 'AdminBase.php';
 class AdminDashboard extends AdminBase {
+     public $url="http://api.exchangeratesapi.io/v1/latest?access_key=d9fa0d08e2158328e031b8b6a7eb7582&format=1";
     public function __construct()
     {
         parent::__construct();
@@ -15,8 +16,14 @@ class AdminDashboard extends AdminBase {
 	public function index()
 	{
 	    if($this->isAdmin()) {
-            $exchangeRate=file_get_contents('exchangeRate.json');
-            $exchangeRate =  json_decode($exchangeRate,true);
+            $exchangeRateBaseEU=file_get_contents($this->url);
+            $exchangeRateBaseEU =  json_decode($exchangeRateBaseEU,true);
+
+            $exchangeRate = array(
+                'USD'=>$exchangeRateBaseEU['rates']['USD'],
+                'RON'=>$exchangeRateBaseEU['rates']['RON']
+            );
+            
             $countOfAllActiveUsers=$this->UserModel->userCount(array('is_active'=>1,'role'=>'user'));
             $countOfAllverifiedUsers=$this->UserModel->userCount(array('isverified'=>1,'role'=>'user'));
 
