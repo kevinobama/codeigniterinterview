@@ -68,7 +68,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	nft
+    <form action="/users/login" method="post">
+        <div class="imgcontainer">
+           login
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" value="kevinobamatheus@gmail.com" required>
+            <br>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" value="888888" required>
+            <br>
+            <button type="submit">Login</button>
+
+        </div>
+    </form>
+
+    <?php if($this->session->flashdata('msg_success')) { ?>
+        <div class="alert alert-success">
+            <?php echo $this->session->flashdata('msg_success'); ?>
+        </div>
+    <?php } ?>
+    <?php if($this->session->flashdata('msg_error')) { ?>
+        <div class="alert alert-danger">
+            <?php echo $this->session->flashdata('msg_error'); ?>
+        </div>
+    <?php } ?>
 </div>
 
 </body>
