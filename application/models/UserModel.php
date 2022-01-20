@@ -13,7 +13,7 @@ class UserModel extends CI_Model {
 
     public function getUsers()
     {
-        return "data";
+        return "";
     }
 
     public function getUserLogin($email, $password)
@@ -39,5 +39,19 @@ class UserModel extends CI_Model {
             $this->db->where('id', $id);
             return $this->db->update('users', $data);
         }
+    }
+
+    //6.2. Count of active and verified users who have attached active products.
+    //SELECT count(distinct user_products.user_id) as usercount  FROM user_products
+    //left join users u on u.id=user_products.user_id
+    //where u.is_active=1 and u.isverified=1 and u.role='user'
+    public function getUserCountAttachedActiveProducts()
+    {
+        $sql="SELECT count(distinct user_products.user_id) as usercount  FROM user_products
+            left join users u on u.id=user_products.user_id
+            where u.is_active=1 and u.isverified=1 and u.role='user'";
+
+        $query = $this->db->query($sql);
+        return $query->result_array()[0]['usercount'];
     }
 }

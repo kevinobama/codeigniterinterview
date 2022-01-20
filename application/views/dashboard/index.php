@@ -86,10 +86,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <table border="1" width="100%">
             <tr>
-                <td width="10%">Count of all active users</td>
+                <td width="50%">Count of all active users</td>
                 <td><?=$countOfAllActiveUsers ?></td>
-                <td width="10%">Count of all verified users</td>
+            </tr>
+            <tr>
+                <td width="50%">Count of all verified users</td>
                 <td><?=$countOfAllverifiedUsers ?></td>
+            </tr>
+            <tr>
+                <td width="50%">6.2. Count of active and verified users who have attached active products.</td>
+                <td><?=$userCountAttachedActiveProducts ?></td>
+            </tr>
+            <tr>
+                <td width="50%">6.3. Count of all active products (just from products table).</td>
+                <td><?=$countActiveProduct ?></td>
+            </tr>
+
+            <tr>
+                <td width="50%">6.4. Count of active products which don't belong to any user.</td>
+                <td><?=$unusedProduct ?></td>
+            </tr>
+            <tr>
+                <td width="50%">6.5. Amount of all active attached products (if user1 has 3 prod1 and 2 prod2 which are active, user2 has 7 prod2 and 4 prod3, prod3 is inactive, then the amount of active attached products will be 3 + 2 + 7 = 12).</td>
+                <td><?=$qtyAttachedProduct ?></td>
+            </tr>
+            <tr>
+                <td width="50%">6.6. Summarized price of all active attached products (from the previous subpoint if prod1 price is 100$, prod2 price is 120$, prod3 price is 200$, the summarized price will be 3100 + 9120 = 1380).</td>
+                <td><?=$priceAttachedProduct ?></td>
+            </tr>
+            <tr>
+                <td width="50%">6.7. Summarized prices of all active products per user. For example - John Summer - 85$, Lennon Green – 107$.</td>
+                <td>
+                    <?php
+                    foreach ($priceAttachedProductPeruser as $priceAttachedProduct) {
+                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price']."$ <br>");
+                    }
+                     ?>
+
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">6.8. The exchange rates for Euro and RON based on USD using https://exchangeratesapi.io/ .</td>
+                <td>
+                    <?php
+                    foreach ($priceAttachedProductPeruser as $priceAttachedProduct) {
+                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price']."$ <br>");
+                    }
+                    ?>
+                </td>
             </tr>
         </table>
     </div>
