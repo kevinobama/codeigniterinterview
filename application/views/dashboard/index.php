@@ -126,11 +126,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </td>
             </tr>
             <tr>
-                <td width="50%">6.8. The exchange rates for Euro and RON based on USD using https://exchangeratesapi.io/ .</td>
+                <td width="50%">6.8. The exchange rates for Euro   based on USD</td>
                 <td>
                     <?php
                     foreach ($priceAttachedProductPeruser as $priceAttachedProduct) {
-                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price']."$ <br>");
+                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price'] * $exchangeRate['usdeuro']."Euro <br>");
+                    }
+                    ?>
+                </td>
+            </tr>
+            <tr>
+                <td width="50%">6.8. The exchange rates for   RON based on USD </td>
+                <td>
+                    <?php
+                    foreach ($priceAttachedProductPeruser as $priceAttachedProduct) {
+                        echo($priceAttachedProduct['firstname']." : ".$priceAttachedProduct['price'] * $exchangeRate['usdRON']."RON <br>");
                     }
                     ?>
                 </td>

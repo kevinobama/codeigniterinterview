@@ -13,6 +13,8 @@ class AdminDashboard extends CI_Controller {
 
 	public function index()
 	{
+	    $exchangeRate=file_get_contents('exchangeRate.json');
+        $exchangeRate =  json_decode($exchangeRate,true);
 	    $countOfAllActiveUsers=$this->UserModel->userCount(array('is_active'=>1,'role'=>'user'));
 	    $countOfAllverifiedUsers=$this->UserModel->userCount(array('isverified'=>1,'role'=>'user'));
 
@@ -33,7 +35,8 @@ class AdminDashboard extends CI_Controller {
             'unusedProduct',
             'qtyAttachedProduct',
             'priceAttachedProduct',
-            'priceAttachedProductPeruser'
+            'priceAttachedProductPeruser',
+            'exchangeRate'
         ));
 	}
 }
