@@ -68,19 +68,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-    <h1>admin Dashboard</h1>
-    <p>        <a href="/">Home</a>|
+    <h1>My products</h1>
+    <p>
+        <a href="/">Home</a>
         <a href="/AdminDashboard/index">admin Dashboard</a>|
         <a href="/AdminProducts/index">products</a>
         <a href="/AdminProducts/myProducts">My Products</a>
     </p>
 	<div id="body">
-        product
-        <?php foreach ($products as $key=>$product) { ?>
-            <p><?=$product['id']?> <?=$product['title']?></p>
+        <?php foreach ($userProducts as $key=>$product) { ?>
+            <p><?=$product['id'] ?>   |&nbsp;&nbsp;&nbsp;&nbsp; <?=$product['title']?>|&nbsp;&nbsp;&nbsp;&nbsp;<?=$product['quantity']?>|&nbsp;&nbsp;&nbsp;&nbsp;<?=$product['price']?></p>
         <?php  } ?>
     </div>
 </div>
+
+<form action="/AdminProducts/addMyProduct" method="post">
+    <div class="imgcontainer">
+        add
+    </div>
+    <div class="container">
+        <label for="uname"><b>products:</b></label>
+        <select id="product" name="product">
+            <?php foreach ($products as $product) { ?>
+                <option value="<?=$product['id'] ?>"><?=$product['title'] ?></option>
+            <?php }?>
+        </select>
+        <br>
+        <label for="uname"><b>qty:</b></label>
+        <input type="text" placeholder="qty" name="qty" value="1" required>
+        <br>
+        <label for="uname"><b>price:</b></label>
+        <input type="text" placeholder="price" name="price" value="1" required>
+        <br>
+        <button type="submit">Save</button>
+
+    </div>
+</form>
 
 </body>
 </html>

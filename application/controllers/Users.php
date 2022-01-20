@@ -45,11 +45,11 @@ class Users extends CI_Controller {
         if($_POST) {
             if ($user = $this->UserModel->getUserLogin($email, $password)) {
 
-                $sessionArray = array('userId'=>$user->id,
-                    'email'=>$user->email,
-                    'firstname'=>$user->firstname,
-                    'lastname'=>$user->lastname,
-                    'role'=>$user->role,
+                $sessionArray = array('userId'=>$user['id'],
+                    'email'=>$user['email'],
+                    'firstname'=>$user['firstname'],
+                    'lastname'=>$user['lastname'],
+                    'role'=>$user['role'],
                     'isLoggedIn' => TRUE
                 );
 
