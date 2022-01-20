@@ -44,12 +44,20 @@ class Users extends CI_Controller {
         $users = array();
         if($_POST) {
             if ($user = $this->UserModel->getUserLogin($email, $password)) {
-                $this->session->set_userdata('email', $email);
-                $this->session->set_userdata('user_id', $user['id']);
-                $this->session->set_userdata('is_logged_in', true);
+
+                $sessionArray = array('userId'=>$user->id,
+                    'email'=>$user->email,
+                    'firstname'=>$user->firstname,
+                    'lastname'=>$user->lastname,
+                    'role'=>$user->role,
+                    'isLoggedIn' => TRUE
+                );
+
+                $this->session->set_userdata($sessionArray);
 
                 $this->session->set_flashdata('msg_success', 'Login Successful!');
-                redirect('home');
+
+                redirect('/AdminDashboard/index');
             } else {
                 $this->session->set_flashdata('msg_error', 'Login credentials does not match!');
 
