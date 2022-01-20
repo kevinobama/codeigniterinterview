@@ -43,7 +43,7 @@ class ProductModel extends CI_Model {
     //where p.status='active'
     //group by user_products.user_id
     public function priceAttachedProduct() {
-        $sql="select sum(user_products.quantity* p.price) as price from user_products 
+        $sql="select sum(user_products.quantity* user_products.price) as price from user_products 
         left join products p on p.id=user_products.productid
         where p.status='active' ";
 
@@ -52,7 +52,7 @@ class ProductModel extends CI_Model {
     }
 
     public function priceAttachedProductPeruser() {
-        $sql="select sum(user_products.quantity* p.price) as price,user_products.user_id,u.firstname from user_products 
+        $sql="select sum(user_products.quantity* user_products.price) as price,user_products.user_id,u.firstname from user_products 
         left join products p on p.id=user_products.productid
         left join users u on u.id=user_products.user_id
         where p.status='active'
